@@ -35,7 +35,7 @@ def dot_home(dotfile):
 
 def dot_workstation(dotfile):
     """Return the full path of dotfile without the dot"""
-    install_path = os.path.dirname(__file__)
+    install_path = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(install_path, dotfile)
 
 
@@ -52,11 +52,10 @@ def link_dotfile(dotfile):
 
 
 def main():
-    current_path = os.path.dirname(__file__)
+    current_path = os.path.dirname(os.path.abspath(__file__))
     files = os.listdir(current_path)
 
     dotfiles = list(set(files) - set(IGNORE_LIST))
-
     install_dots(dotfiles)
 
 if __name__ == '__main__':
