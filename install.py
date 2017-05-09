@@ -1,36 +1,63 @@
 #!/usr/bin/env python
 import os
 import subprocess
-import random, string
+import random
+import string
+import glob
 
-def randomword(length):
-    return ''.join(random.choice(string.lowercase) for i in range(length))
+IGNORE_LIST = [
+    ".idea",
+    ".git",
+    "install.py",
+    "README.md"
+]
 
-def run_command(cmd):
-    return subprocess.check_output(cmd.split(' '))
 
-def backup_dots(files):
-    backup_folder = "/tmp/{}".format(randomword(10))
-    home = os.getenv("HOME")
-    run_command("mkdir -p {}".format(backup_folder))
+def install_dots(dotfiles):
 
-    print("Creating a backup folder:{}".format(backup_folder))
+    for dotfile in dotfiles:
+        dotfile_path = dot_home(dotfile)
 
-    for file_name in files:
-        run_command("cp {}/{} {}".format(home, file_name, backup_folder))
+        if is_link(dotfile_path):
+            print("Already a symbolic link: {}".format(dotfile_path))
+        else:
+            link_dotfile(dotfile)
+
 
 def is_link(file_name):
     return os.path.islink(file_name)
 
-def main():
-    backup_list = []
-    for file_name in os.listdir('.'):
-        if file_name[0] == '.':
-            if not is_link(file_name):
-                backup_list.append(file_name)
 
-    backup_dots(backup_list)
+def dot_home(dotfile):
+    home = os.getenv("HOME")
+    return os.path.join(home, ".{}".format(dotfile))
+
+
+def dot_workstation(dotfile):
+    """Return the full path of dotfile without the dot"""
+    install_path = os.path.dirname(__file__)
+    return os.path.join(install_path, dotfile)
+
+
+def link_dotfile(dotfile):
+    source = dot_workstation(dotfile)
+    target = dot_home(dotfile)
+
+    print("Linking {} with {}".format(source, target))
+
+    try:
+        os.symlink(source, target)
+    except OSError:
+        print("Remove the file {} before linking".format(target))
+
+
+def main():
+    current_path = os.path.dirname(__file__)
+    files = os.listdir(current_path)
+
+    dotfiles = list(set(files) - set(IGNORE_LIST))
+
+    install_dots(dotfiles)
 
 if __name__ == '__main__':
     main()
-      
