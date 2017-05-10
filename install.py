@@ -52,9 +52,13 @@ def link_dotfile(dotfile):
 
 def install_custom_zsh():
     """Install custom zsh plugins"""
-    
+
     source = dot_workstation("zsh/custom")
     target = os.path.join(HOME, ".oh-my-zsh/custom")
+
+    if is_link(target):
+            print("Already a symbolic link: {}".format(target))
+            return
 
     print("Linking {} with {}".format(source, target))
 
