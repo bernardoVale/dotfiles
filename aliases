@@ -1,0 +1,5 @@
+alias wsi_home="cd /Users/bvale/wsgc"
+alias vim="/usr/local/bin/vim"
+alias vi="vim"
+alias ap="ansible-playbook"
+alias python3="/usr/local/bin/python3.6"

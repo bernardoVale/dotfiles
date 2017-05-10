@@ -1,9 +1,14 @@
-export GOPATH=~/go
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Load Variables
+source ~/.variables
+# Load Custom Alias
+source ~/.aliases
+# Mac OSX
+source ~/.macos
+# import docker alias
+. ~/wsi_workstation_config.sh
 
 if command -v brew >/dev/null && [ -f `brew --prefix`/etc/autojump.sh ]; then
   . `brew --prefix`/etc/autojump.sh
 fi
 
-source ~/.macos

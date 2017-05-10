@@ -5,7 +5,7 @@ export ZSH=/Users/$LOGNAME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="avit"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -73,12 +73,17 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-export GOPATH=~/go
+
+# Load Variables
+source ~/.variables
+# Load Custom Alias
+source ~/.aliases
+# Mac OSX
+source ~/.macos
+# import docker alias
+. ~/wsi_workstation_config.sh
 
 # Autojump Configuration
 if command -v brew >/dev/null && [ -f `brew --prefix`/etc/autojump.sh ]; then
   . `brew --prefix`/etc/autojump.sh
 fi
-
-# Mac OSX
-source ~/.macos

@@ -8,6 +8,12 @@ docker-sa(){
 	export DOCKER_CERT_PATH=/Users/bvale/.docker/docker-sa.avenuecode.com
 }
 
+avenuecode(){
+        export DOCKER_HOST=tcp://avenuecode.com:2376
+        export DOCKER_TLS_VERIFY=1
+        export DOCKER_CERT_PATH=/Users/bvale/.docker/avenuecode.com
+}
+
 site-release(){
 	export DOCKER_HOST=tcp://site-release.avenuecode.com:2376
 	export DOCKER_TLS_VERIFY=1
