@@ -11,7 +11,7 @@ IGNORE_LIST = [
     "install.py",
     "README.md"
 ]
-
+HOME = os.getenv("HOME")
 
 def install_dots(dotfiles):
 
@@ -50,6 +50,19 @@ def link_dotfile(dotfile):
     except OSError:
         print("Remove the file {} before linking".format(target))
 
+def install_custom_zsh():
+    """Install custom zsh plugins"""
+    
+    source = dot_workstation("zsh/custom")
+    target = os.path.join(HOME, ".oh-my-zsh/custom")
+
+    print("Linking {} with {}".format(source, target))
+
+    try:
+        os.symlink(source, target)
+    except OSError:
+        print("Remove the file {} before linking".format(target))
+
 
 def main():
     current_path = os.path.dirname(os.path.abspath(__file__))
@@ -57,6 +70,7 @@ def main():
 
     dotfiles = list(set(files) - set(IGNORE_LIST))
     install_dots(dotfiles)
+    install_custom_zsh()
 
 if __name__ == '__main__':
     main()

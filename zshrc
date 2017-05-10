@@ -74,3 +74,8 @@ source $ZSH/oh-my-zsh.sh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 export GOPATH=~/go
+
+# Autojump Configuration
+if command -v brew >/dev/null && [ -f `brew --prefix`/etc/autojump.sh ]; then
+  . `brew --prefix`/etc/autojump.sh
+fi
