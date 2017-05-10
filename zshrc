@@ -79,3 +79,6 @@ export GOPATH=~/go
 if command -v brew >/dev/null && [ -f `brew --prefix`/etc/autojump.sh ]; then
   . `brew --prefix`/etc/autojump.sh
 fi
+
+# Mac OSX
+source ~/.macos
