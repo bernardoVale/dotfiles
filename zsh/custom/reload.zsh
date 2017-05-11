@@ -1,5 +1,5 @@
 # Reload zsh
 function reload()
 {
-  source ~/.zshrc
+  zsh -l
 }
