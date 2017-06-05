@@ -3,3 +3,6 @@ export GOPATH=~/go
 
 # Golang + RVM
 export PATH="$PATH:$GOPATH/bin:/usr/local/bin:$HOME/.rvm/bin"
+
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"

@@ -3,3 +3,12 @@
 
 # IDE's
 .idea/
+
+# Python stuff
+*.pyc
+
+# IDEA
+*.iml
+
+# Maven
+*target/
