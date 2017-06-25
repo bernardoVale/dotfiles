@@ -78,7 +78,7 @@ source $ZSH/oh-my-zsh.sh
 source ~/.variables
 # Load Custom Alias
 source ~/.aliases
-# Mac OSX - Don't source it use it once 
+# Mac OSX - Don't source it use it once
 #source ~/.macos
 # import docker alias
 . ~/wsi_workstation_config.sh
